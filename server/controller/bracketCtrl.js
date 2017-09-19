@@ -1,9 +1,9 @@
-const { Player } = require('../database/models/bracketModel');
+const Player = require('../database/models/bracketModel');
 
 
 module.exports = {
   fetchAll: (req, res) => {
-    Player.findAll()
+    Player.findAll({})
       .then(data => {
         res.status(200).send(data)
       })
@@ -20,7 +20,7 @@ module.exports = {
       skunks: req.body.skunks
     })
       .then(data => {
-        res.status(202).send(data)
+        res.status(201).send(data)
       })
       .catch(err => {
         res.status(404).send(err)

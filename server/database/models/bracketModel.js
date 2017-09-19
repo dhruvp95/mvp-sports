@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../index');
+const seed = require('../../seeding');
 
 
 const Player = db.define('Player', {
@@ -20,14 +21,17 @@ const Player = db.define('Player', {
   }
 
 }, {
-  timestamps: false
-})
+  timestamps: false,
+  allowNull: false
+});
 
 
-// Player.sync({force: true});
-Player.sync();
+Player.sync({force: true})
+// Player.sync()
+  .then(() => seed(Player));
 
-module.exports = { Player };
+
+module.exports = Player;
 
 
 
