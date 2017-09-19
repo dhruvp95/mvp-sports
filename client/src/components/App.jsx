@@ -14,6 +14,7 @@ class App extends Component {
     }
 
     this.getJuniors = this.getJuniors.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
@@ -35,14 +36,22 @@ class App extends Component {
       .catch(err => console.log('error in getting junior data', err));
   }
 
+  onClick(id) {
+    axios.delete('/api/players/' + id) 
+      .then(() => {
+        console.log('deleted id: ', id)
+        this.getJuniors();
+      })
+      .catch(err => console.log('error in deleting', err));
+  }
 
   render() {
     const { juniorsData } = this.state
     return (
-      <div>
+      <div className="container">
         <h3 className="title">Welcome to HRLA PingPong Rankings</h3>
         <Navbar />
-        <Routes juniors={juniorsData} refresh={this.getJuniors}/>
+        <Routes juniors={juniorsData} refresh={this.getJuniors} remove={this.onClick}/>
       </div>
     )
   }

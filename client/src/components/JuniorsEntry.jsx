@@ -11,7 +11,7 @@ class JuniorsEntry extends Component {
     super(props);
 
     this.state = {
-      playerData: [],
+      playerData: this.props.juniors,
       player: '',
       wins: null,
       losses: null,
@@ -54,6 +54,11 @@ class JuniorsEntry extends Component {
   onSubmit () {
     console.log('submit button clicked')
     console.log('this is the state after clicking submit: ', this.state);
+    this.state.playerData.forEach(player => {
+      if (player.player === this.state.player) {
+        //axios request to update
+      }
+    })
     axios.post('/api/players', {
       player: this.state.player,
       wins: this.state.wins,
@@ -62,6 +67,10 @@ class JuniorsEntry extends Component {
     })
       .then(() => {
         console.log('refreshing page')
+        document.getElementById('player').value = '';
+        document.getElementById('wins').value = '';
+        document.getElementById('losses').value = '';
+        document.getElementById('skunks').value = '';
         this.props.refresh();
       })
       .catch(err => console.log('error in posting', err));
@@ -77,12 +86,14 @@ class JuniorsEntry extends Component {
           <Create player={this.savePlayer} losses={this.saveLosses} wins={this.saveWins} skunks={this.saveSkunks} submit={this.onSubmit}/>
         </div>
         <div>
-          <table className="rankTable">
+          <table className="table">
             <thead>
             <tr>
+              <th></th>
               <th>Player Name</th>
               <th>Wins</th>
               <th>Losses</th>
+              <th>Win %</th>
               <th>Skunks</th>
             </tr>
             </thead>
@@ -91,7 +102,7 @@ class JuniorsEntry extends Component {
               ? <Loading />
               : 
                 this.props.juniors.map(player => 
-                  <Juniors player={player}/>
+                  <Juniors player={player} remove={this.props.remove}/>
                 )
               }
           </table>

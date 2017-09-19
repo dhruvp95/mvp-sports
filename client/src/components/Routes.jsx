@@ -4,11 +4,11 @@ import Home from './Home'
 import JuniorsEntry from './JuniorsEntry'
 import Seniors from './Seniors'
 
-const Routes = ({ juniors, refresh }) => (
+const Routes = ({ juniors, refresh, remove }) => (
   <div>
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route path='/juniors' render={() => <JuniorsEntry juniors={juniors} refresh={refresh}/>}/>
+      <Route path='/juniors' render={() => <JuniorsEntry juniors={juniors} refresh={refresh} remove={remove}/>}/>
       <Route path='/seniors' render={() => <Seniors />}/>
     </Switch>
   </div>
