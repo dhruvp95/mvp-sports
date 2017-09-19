@@ -1,3 +1,21 @@
 /* body {
   background-attachment: fixed;
 } */
+
+.title {
+  text-align: center;
+}
+
+.navbar {
+  font-size: 18px;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 200px;
+  font-size: 40px;
+}
+
+.row {
+  padding: 50px;
+}

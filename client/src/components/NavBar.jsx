@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const Navbar = () => (
+const Navbar = ({ juniors }) => (
   
   <div className="navbar">
-  
-    <Link to={'/'}>Home</Link>
-    <Link to={'/juniors'}>Juniors</Link>
-    <Link to={'/seniors'}>Seniors</Link>
-    
-    {/* <span>Juniors</span>
-    <span>Seniors</span> */}
+    <ul>
+      <li>
+        <NavLink exact to={'/'} activeClassName="active">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={'/juniors'} activeClassName="active">Juniors</NavLink>
+      </li>
+      <li>
+        <NavLink to={'/seniors'} activeClassName="active">Seniors</NavLink>
+      </li>
+    </ul>
   </div>
   
 )
