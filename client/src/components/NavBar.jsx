@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar = ({ juniors }) => (
   
-  <div className="navbar">
+  <div className="nav nav-pills">
     <ul>
       <li>
         <NavLink exact to={'/'} activeClassName="active">Home</NavLink>

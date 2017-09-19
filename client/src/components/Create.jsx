@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 const Create = ({ player, wins, losses, skunks, submit }) => (
-    <div>
+    <div className="row">
         <div>
           <input type="text" placeholder="Name" id="player" onChange={(e) => player(e.target.value)}></input>
         </div>

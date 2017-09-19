@@ -54,26 +54,29 @@ class JuniorsEntry extends Component {
   onSubmit () {
     console.log('submit button clicked')
     console.log('this is the state after clicking submit: ', this.state);
-    this.state.playerData.forEach(player => {
-      if (player.player === this.state.player) {
-        //axios request to update
-      }
-    })
-    axios.post('/api/players', {
-      player: this.state.player,
-      wins: this.state.wins,
-      losses: this.state.losses,
-      skunks: this.state.skunks
-    })
-      .then(() => {
-        console.log('refreshing page')
-        document.getElementById('player').value = '';
-        document.getElementById('wins').value = '';
-        document.getElementById('losses').value = '';
-        document.getElementById('skunks').value = '';
-        this.props.refresh();
+    //make sure all fields are filled out
+    const {player, wins, losses, skunks} = this.state;
+
+    if(!player || !wins || !losses || !skunks) {
+      alert('Pleae make sure all fields are completed!')
+    } else {
+      axios.post('/api/players', {
+        player: this.state.player,
+        wins: this.state.wins,
+        losses: this.state.losses,
+        skunks: this.state.skunks
       })
-      .catch(err => console.log('error in posting', err));
+        .then(() => {
+          console.log('refreshing page')
+          document.getElementById('player').value = '';
+          document.getElementById('wins').value = '';
+          document.getElementById('losses').value = '';
+          document.getElementById('skunks').value = '';
+          this.props.refresh();
+        })
+        .catch(err => console.log('error in posting', err));
+    }
+
   }
   
   
