@@ -1,11 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Navbar from './NavBar';
+import Home from './Home';
+import Routes from './Routes';
 
 class App extends Component {
+
+
   render() {
     return (
       <div>
-        This is where my pingpong bracket will go
+        <Navbar />
+        <Routes />
       </div>
+
     )
   }
 }
