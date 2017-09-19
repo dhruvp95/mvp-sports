@@ -1,11 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => (
   
   <div className="navbar">
-    This is the navbar
-    <span>Juniors</span>
-    <span>Seniors</span>
+  
+    <Link to={'/'}>Home</Link>
+    <Link to={'/juniors'}>Juniors</Link>
+    <Link to={'/seniors'}>Seniors</Link>
+    
+    {/* <span>Juniors</span>
+    <span>Seniors</span> */}
   </div>
   
 )
