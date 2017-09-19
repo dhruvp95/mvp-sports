@@ -17,7 +17,7 @@ const Player = db.define('Player', {
   },
 
   percentage: {
-    type: Sequelize.FLOAT
+    type: Sequelize.DECIMAL
   },
 
   skunks: {
@@ -30,9 +30,9 @@ const Player = db.define('Player', {
 });
 
 
-// Player.sync({force: true})
-//   .then(() => seed(Player));
-Player.sync()
+Player.sync({force: true})
+  .then(() => seed(Player));
+// Player.sync()
 
 
 module.exports = Player;

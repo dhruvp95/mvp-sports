@@ -17,11 +17,15 @@ module.exports = {
   createPlayer: (req, res) => {
     
     const toDecimal = (wins, losses) => {
-      let total = wins + losses;
-      //var test = Math.round(43 / 55*1000)/1000;
-      return Math.round(wins / total*1000)/1000;
-    }
-    
+      console.log('wins: ', wins);
+      console.log('losses: ', losses);
+      let total = Number(wins) + Number(losses);
+      console.log('total: ', total);
+      let n = wins/total;
+      
+      return n.toFixed(3);
+};
+
     Player.create({
       player: req.body.player,
       wins: req.body.wins,
